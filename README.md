@@ -166,11 +166,7 @@ Visual Studio Code 1.80.0 or later.
 
 ### 1.0.0
 
-Initial public release. Context-aware default comment style per file type, a dedicated command per comment style (JSDoc, C Multiline, C Single Line, Perl, SQL, Visual Basic, INI, HTML), and `Uncomment`, which detects and removes whatever's actually there regardless of which command added it. A trailing comment found by `Uncomment` — or via the dedicated `Remove or Uncomment Trailing Comments` command — is asked about separately: remove it entirely, or just uncomment it, exposing its content with the separating whitespace normalised the same way leading indent is. Leading-indentation normalisation (tabs, spaces, or leave as-is) is available throughout, respecting relative indentation between lines rather than flattening it. Settings cover per-language and global default styles, trailing-comment handling, selection behaviour after an edit, and confirmation modals, alongside sensible defaults that need no configuration to use well.
-
-### Pre-1.0 development
-
-Iteratively developed and refined prior to this first public release — per-style commands and Uncomment built out, trailing-comment detection and handling redesigned twice (culminating in the current Remove/Uncomment choice), comment-count and confirmation wording corrected, leading-whitespace normalisation added, and the extension renamed from "Smart Comments" to "Smarter Comments" along the way.
+Initial public release.
 
 ## License
 
