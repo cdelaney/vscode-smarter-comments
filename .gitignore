@@ -1,0 +1,19 @@
+# Build output
+.vscode-test/
+
+# Dependencies
+node_modules/
+
+# Package manager files
+package-lock.json
+
+# Tool-specific files
+*.vsix
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+*.lnk
+
+# Personal working files
+bak/

@@ -1,0 +1,344 @@
+{
+	"name": "smarter-comments",
+	"displayName": "Smarter Comments",
+	"description": "Insert and remove comments in the style that fits \u2014 with per-language defaults, accurate target-text detection, and a single global uncomment command.",
+	"publisher": "cdelaney",
+	"engines": {
+		"vscode": "^1.80.0"
+	},
+	"version": "1.0.0",
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"comments",
+		"comment",
+		"uncomment",
+		"jsdoc",
+		"toggle comment"
+	],
+	"icon": "./images/icon.png",
+	"license": "MIT",
+	"activationEvents": [],
+	"main": "./extension.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/cdelaney/vscode-smarter-comments"
+	},
+	"contributes": {
+		"commands": [
+			{
+				"command": "smarterComments.default",
+				"title": "Comment",
+				"category": "Smarter Comments"
+			},
+			{
+				"command": "smarterComments.jsdoc",
+				"title": "JSDoc",
+				"category": "Smarter Comments"
+			},
+			{
+				"command": "smarterComments.c-multiline-inline",
+				"title": "C Multiline (inline style)",
+				"category": "Smarter Comments"
+			},
+			{
+				"command": "smarterComments.c-multiline-block",
+				"title": "C Multiline (block style)",
+				"category": "Smarter Comments"
+			},
+			{
+				"command": "smarterComments.js-single",
+				"title": "C Single Line",
+				"category": "Smarter Comments"
+			},
+			{
+				"command": "smarterComments.perl-single",
+				"title": "Perl",
+				"category": "Smarter Comments"
+			},
+			{
+				"command": "smarterComments.sql-single",
+				"title": "SQL",
+				"category": "Smarter Comments"
+			},
+			{
+				"command": "smarterComments.vb-single",
+				"title": "Visual Basic",
+				"category": "Smarter Comments"
+			},
+			{
+				"command": "smarterComments.ini-single",
+				"title": "INI",
+				"category": "Smarter Comments"
+			},
+			{
+				"command": "smarterComments.html-inline",
+				"title": "HTML (inline style)",
+				"category": "Smarter Comments"
+			},
+			{
+				"command": "smarterComments.html-block",
+				"title": "HTML (block style)",
+				"category": "Smarter Comments"
+			},
+			{
+				"command": "smarterComments.uncomment",
+				"title": "Uncomment",
+				"category": "Smarter Comments"
+			},
+			{
+				"command": "smarterComments.removeOrUncommentTrailingComments",
+				"title": "Remove or Uncomment Trailing Comments",
+				"category": "Smarter Comments"
+			}
+		],
+		"configuration": {
+			"title": "Smarter Comments",
+			"properties": {
+				"smarterComments.outputConfirmationModal": {
+					"type": "boolean",
+					"default": false,
+					"description": "Show a confirmation modal after inserting or removing a comment, in addition to the status bar message.",
+					"order": 1
+				},
+				"smarterComments.askRemoveOrUncommentTrailingComments": {
+					"type": "boolean",
+					"default": true,
+					"description": "When targeted text contains trailing comments, ask if they should be removed entirely or just uncommented. Doesn't apply to HTML comments.",
+					"order": 2
+				},
+				"smarterComments.preserveSelectionAfterEdit": {
+					"type": "boolean",
+					"default": true,
+					"description": "When a selection is commented or uncommented, keep it selected afterward.",
+					"order": 3
+				},
+				"smarterComments.defaultStyle": {
+					"type": "string",
+					"default": "jsdoc",
+					"enum": [
+						"jsdoc",
+						"c-multiline-inline",
+						"c-multiline-block",
+						"js-single",
+						"perl-single",
+						"sql-single",
+						"vb-single",
+						"ini-single",
+						"html-inline",
+						"html-block"
+					],
+					"enumItemLabels": [
+						"JSDoc",
+						"C Multiline (inline style)",
+						"C Multiline (block style)",
+						"C Single Line",
+						"Perl",
+						"SQL",
+						"Visual Basic",
+						"INI",
+						"HTML (inline style)",
+						"HTML (block style)"
+					],
+					"description": "The comment style the global Smarter Comments command applies to a file type with no more specific default set below.",
+					"order": 4
+				},
+				"smarterComments.languageDefault.javascript": {
+					"type": "string",
+					"default": "jsdoc",
+					"enum": [
+						"jsdoc",
+						"c-multiline-inline",
+						"c-multiline-block",
+						"js-single"
+					],
+					"enumItemLabels": [
+						"JSDoc",
+						"C Multiline (inline style)",
+						"C Multiline (block style)",
+						"C Single Line"
+					],
+					"description": "Default comment style for JavaScript files.",
+					"order": 5
+				},
+				"smarterComments.languageDefault.javascriptreact": {
+					"type": "string",
+					"default": "jsdoc",
+					"enum": [
+						"jsdoc",
+						"c-multiline-inline",
+						"c-multiline-block",
+						"js-single"
+					],
+					"enumItemLabels": [
+						"JSDoc",
+						"C Multiline (inline style)",
+						"C Multiline (block style)",
+						"C Single Line"
+					],
+					"description": "Default comment style for JavaScript React (JSX) files.",
+					"order": 6
+				},
+				"smarterComments.languageDefault.typescript": {
+					"type": "string",
+					"default": "jsdoc",
+					"enum": [
+						"jsdoc",
+						"c-multiline-inline",
+						"c-multiline-block",
+						"js-single"
+					],
+					"enumItemLabels": [
+						"JSDoc",
+						"C Multiline (inline style)",
+						"C Multiline (block style)",
+						"C Single Line"
+					],
+					"description": "Default comment style for TypeScript files.",
+					"order": 7
+				},
+				"smarterComments.languageDefault.typescriptreact": {
+					"type": "string",
+					"default": "jsdoc",
+					"enum": [
+						"jsdoc",
+						"c-multiline-inline",
+						"c-multiline-block",
+						"js-single"
+					],
+					"enumItemLabels": [
+						"JSDoc",
+						"C Multiline (inline style)",
+						"C Multiline (block style)",
+						"C Single Line"
+					],
+					"description": "Default comment style for TypeScript React (TSX) files.",
+					"order": 8
+				},
+				"smarterComments.languageDefault.css": {
+					"type": "string",
+					"default": "c-multiline-block",
+					"enum": [
+						"jsdoc",
+						"c-multiline-inline",
+						"c-multiline-block"
+					],
+					"enumItemLabels": [
+						"JSDoc",
+						"C Multiline (inline style)",
+						"C Multiline (block style)"
+					],
+					"description": "Default comment style for CSS files.",
+					"order": 9
+				},
+				"smarterComments.languageDefault.scss": {
+					"type": "string",
+					"default": "c-multiline-block",
+					"enum": [
+						"jsdoc",
+						"c-multiline-inline",
+						"c-multiline-block",
+						"js-single"
+					],
+					"enumItemLabels": [
+						"JSDoc",
+						"C Multiline (inline style)",
+						"C Multiline (block style)",
+						"C Single Line"
+					],
+					"description": "Default comment style for SCSS files.",
+					"order": 10
+				},
+				"smarterComments.languageDefault.less": {
+					"type": "string",
+					"default": "c-multiline-block",
+					"enum": [
+						"jsdoc",
+						"c-multiline-inline",
+						"c-multiline-block",
+						"js-single"
+					],
+					"enumItemLabels": [
+						"JSDoc",
+						"C Multiline (inline style)",
+						"C Multiline (block style)",
+						"C Single Line"
+					],
+					"description": "Default comment style for LESS files.",
+					"order": 11
+				},
+				"smarterComments.languageDefault.sql": {
+					"type": "string",
+					"default": "perl-single",
+					"enum": [
+						"perl-single",
+						"sql-single",
+						"jsdoc",
+						"c-multiline-inline",
+						"c-multiline-block"
+					],
+					"enumItemLabels": [
+						"Perl-style (#)",
+						"SQL-style (--)",
+						"JSDoc",
+						"C Multiline (inline style)",
+						"C Multiline (block style)"
+					],
+					"description": "Default comment style for SQL files.",
+					"order": 12
+				},
+				"smarterComments.languageDefault.php": {
+					"type": "string",
+					"default": "jsdoc",
+					"enum": [
+						"jsdoc",
+						"c-multiline-inline",
+						"c-multiline-block",
+						"js-single",
+						"perl-single"
+					],
+					"enumItemLabels": [
+						"JSDoc",
+						"C Multiline (inline style)",
+						"C Multiline (block style)",
+						"C Single Line",
+						"Perl-style (#)"
+					],
+					"description": "Default comment style for PHP files.",
+					"order": 13
+				},
+				"smarterComments.languageDefault.html": {
+					"type": "string",
+					"default": "html-block",
+					"enum": [
+						"html-inline",
+						"html-block"
+					],
+					"enumItemLabels": [
+						"HTML (inline style)",
+						"HTML (block style)"
+					],
+					"description": "Default comment style for HTML files.",
+					"order": 14
+				},
+				"smarterComments.normaliseLeadingWhitespace": {
+					"type": "string",
+					"default": "",
+					"enum": [
+						"",
+						"tabs",
+						"spaces"
+					],
+					"enumItemLabels": [
+						"Leave as-is",
+						"Tabs",
+						"Spaces"
+					],
+					"description": "Normalises mixed leading indentation before it's used as a new comment's own base indent, or restored when a comment is removed. \"Leave as-is\" touches nothing. Genuinely mixed tab/space indentation is handled as a best-effort approximation either way; a file already using tabs or spaces consistently is respected exactly.",
+					"order": 15
+				}
+			}
+		}
+	}
+}
