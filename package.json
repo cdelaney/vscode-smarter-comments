@@ -6,7 +6,7 @@
 	"engines": {
 		"vscode": "^1.80.0"
 	},
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"categories": [
 		"Other"
 	],
@@ -14,8 +14,33 @@
 		"comments",
 		"comment",
 		"uncomment",
+		"toggle comment",
 		"jsdoc",
-		"toggle comment"
+		"javascript",
+		"typescript",
+		"react",
+		"jsx",
+		"tsx",
+		"css",
+		"scss",
+		"less",
+		"php",
+		"perl",
+		"sql",
+		"html",
+		"ini",
+		"visual basic",
+		"vb",
+		"clojure",
+		"common lisp",
+		"apache",
+		"editorconfig",
+		"dotenv",
+		"dotfiles",
+		"block comment",
+		"line comment",
+		"inline comment",
+		"doc comment"
 	],
 	"icon": "./images/icon.png",
 	"license": "MIT",
